@@ -10,6 +10,7 @@ import React, { useCallback } from "react";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { lowlight } from "lowlight";
 import Image from "@tiptap/extension-image";
+import { GrBlockQuote } from "react-icons/gr";
 import {
   ImBold,
   ImItalic,
@@ -41,6 +42,7 @@ import Control from "./controls";
 import HeadingControl from "./headingcontrol";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
+import Placeholder from "@tiptap/extension-placeholder";
 
 const MenuBar = ({ editor }) => {
   const addImage = useCallback(() => {
@@ -149,6 +151,13 @@ const MenuBar = ({ editor }) => {
         name="superscript"
         activeName="superscript"
       />
+      <Control
+        icon={<GrBlockQuote />}
+        editor={editor}
+        action={() => editor.chain().focus().toggleBlockquote().run()}
+        name="blockquote"
+        activeName="blockquote"
+      />
     </Box>
   );
 };
@@ -171,10 +180,10 @@ const Editor = () => {
       CodeBlockLowlight.configure({
         lowlight,
       }),
+      Placeholder.configure({
+        placeholder: "Write Something...",
+      }),
     ],
-    content: `
-      Hello
-    `,
   });
 
   return (

@@ -37,15 +37,7 @@ export default function HeadingControl(props) {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = (val = null) => {
-    if (val) {
-      setCurrentHeading((oldval) => {
-        if (val === oldval) {
-          return props.icon;
-        }
-        return val;
-      });
-    }
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
@@ -75,22 +67,22 @@ export default function HeadingControl(props) {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={() => handleClose("h1")}>
+        <MenuItem onClick={() => handleClose()}>
           <Option level="1" editor={props.editor} size="24px"></Option>
         </MenuItem>
-        <MenuItem onClick={() => handleClose("h2")}>
+        <MenuItem onClick={() => handleClose()}>
           <Option level="2" editor={props.editor} size="22px"></Option>
         </MenuItem>
-        <MenuItem onClick={() => handleClose("h3")}>
+        <MenuItem onClick={() => handleClose()}>
           <Option level="3" editor={props.editor} size="20px"></Option>
         </MenuItem>
-        <MenuItem onClick={() => handleClose("h4")}>
+        <MenuItem onClick={() => handleClose()}>
           <Option level="4" editor={props.editor} size="18px"></Option>
         </MenuItem>
-        <MenuItem onClick={() => handleClose("h5")}>
+        <MenuItem onClick={() => handleClose()}>
           <Option level="5" editor={props.editor} size="16px"></Option>
         </MenuItem>
-        <MenuItem onClick={() => handleClose("h6")}>
+        <MenuItem onClick={() => handleClose()}>
           <Option level="6" editor={props.editor} size="14px"></Option>
         </MenuItem>
       </Menu>
